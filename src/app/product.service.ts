@@ -3,6 +3,8 @@ import { Http, Response } from '@angular/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { Album } from './album'
+
 @Injectable()
 export class ProductService {
 
@@ -12,8 +14,8 @@ export class ProductService {
 
   // La función puede tener mejor esta cabecera pero para pasar el test del curso se tiene que poner sin especificar el tipo de retorno
   // getAlbum(id: number): Observable<JSON> {
-  getAlbum(id: number) {
-    return this._http.get(this._albumUrl).map((response: Response) => response.json());
+  getAlbum(id: number): Observable<Album> {
+    return this._http.get(this._albumUrl).map((response: Response) => <Album>response.json());
   }
 
 }
