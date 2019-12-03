@@ -12,10 +12,8 @@ export class ProductService {
 
   constructor(private _http: Http) { }
 
-  // La función puede tener mejor esta cabecera pero para pasar el test del curso se tiene que poner sin especificar el tipo de retorno
-  // getAlbum(id: number): Observable<JSON> {
   getAlbum(id: number): Observable<Album> {
-    return this._http.get(this._albumUrl).map((response: Response) => <Album>response.json());
+    return this._http.get(this._albumUrl).map(response => <Album>response.json());
   }
 
 }
